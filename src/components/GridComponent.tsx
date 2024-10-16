@@ -1,13 +1,11 @@
 "use client";
 import React, { useEffect, useRef } from "react";
 import gsap from "gsap";
-import {
-  MorphSVGPlugin,
-  DrawSVGPlugin,
-  SplitText,
-  Draggable,
-  InertiaPlugin,
-} from "gsap/all";
+import { SplitText } from "gsap/SplitText";
+import { Draggable } from "gsap/Draggable";
+import { InertiaPlugin } from "gsap/InertiaPlugin";
+import { MorphSVGPlugin } from "gsap/MorphSVGPlugin";
+import { DrawSVGPlugin } from "gsap/DrawSVGPlugin";
 
 // Import styles
 import "../app/globals.css";
