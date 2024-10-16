@@ -2,10 +2,11 @@
 import React, { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { followEyeAnimation } from "../utils/followEyeAnimation";
-import "../app/globals.css";
+import styles from "./page.module.css";
 
 export default function Home() {
   const containerRef = useRef<HTMLDivElement | null>(null);
+  const color_pallet = ["blue", "red", "yellow", "black"];
 
   useEffect(() => {
     if (!containerRef.current) return;
@@ -32,8 +33,8 @@ export default function Home() {
   }, []);
 
   return (
-    <div id="print_container">
-      <div id="grid_container" ref={containerRef}>
+    <div id={styles.print_container}>
+      <div id={styles.grid_container} ref={containerRef}>
         {/* -- Following Eye -- */}
         <div className="box">
           <div className="box-content">
@@ -98,13 +99,15 @@ export default function Home() {
         </div>
       </div>
       <div>
-        <div className="title_container">
-          <p className="title">GSAP GRID</p>
-          <div className="color_pallet">
-            <div className="blue"></div>
-            <div className="red"></div>
-            <div className="yellow"></div>
-            <div className="black"></div>
+        <div className={styles.title_container}>
+          <p className={styles.title}>GSAP GRID</p>
+          <div className={styles.color_pallet}>
+            {color_pallet.map((color) => (
+              <div
+                key={color}
+                style={{ backgroundColor: `var(--color-${color})` }}
+              ></div>
+            ))}
           </div>
         </div>
       </div>
