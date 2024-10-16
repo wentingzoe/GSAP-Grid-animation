@@ -1,23 +1,25 @@
 "use client";
 import React, { useEffect, useRef } from "react";
 import gsap from "gsap";
-import { SplitText } from "gsap/SplitText";
-import { Draggable } from "gsap/Draggable";
-import { InertiaPlugin } from "gsap/InertiaPlugin";
-import { MorphSVGPlugin } from "gsap/MorphSVGPlugin";
-import { DrawSVGPlugin } from "gsap/DrawSVGPlugin";
+// import {
+//   MorphSVGPlugin,
+//   DrawSVGPlugin,
+//   SplitText,
+//   Draggable,
+//   InertiaPlugin,
+// } from "gsap/all";
 
-// Import styles
 import "../app/globals.css";
 import { followEyeAnimation } from "../utils/followEyeAnimation";
 
-gsap.registerPlugin(
-  MorphSVGPlugin,
-  DrawSVGPlugin,
-  SplitText,
-  Draggable,
-  InertiaPlugin
-);
+// gsap.registerPlugin(
+//   MorphSVGPlugin,
+//   DrawSVGPlugin,
+//   SplitText,
+//   Draggable,
+//   InertiaPlugin
+// );
+// Need buy license for MorphSVGPlugin, DrawSVGPlugin, SplitText, Draggable, InertiaPlugin
 
 const GridComponent: React.FC = () => {
   const containerRef = useRef<HTMLDivElement | null>(null);
