@@ -1,9 +1,10 @@
 "use client";
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
-import FollowEye from "../components/FollowEye";
-import { followEyeAnimation } from "../utils/animations";
+// import { followEyeAnimation } from "@/utils/animations";
 import styles from "./page.module.css";
+import FollowEye from "@/components/FollowEye";
+import RotatingStars from "@/components/RotaingStars";
 
 export default function Home() {
   const containerRef = useRef<HTMLDivElement | null>(null);
@@ -12,7 +13,7 @@ export default function Home() {
   useEffect(() => {
     if (!containerRef.current) return;
 
-    const container = containerRef.current;
+    // const container = containerRef.current;
     const boxes = gsap.utils.toArray<HTMLElement>(".box");
 
     gsap.to(boxes, {
@@ -21,14 +22,23 @@ export default function Home() {
       stagger: 0.1,
       ease: "power1.inOut",
     });
+  }, []); // Close the first useEffect
 
+  // Following Eye Animation + Mousemove Event
+  const [mousePosition, setMousePosition] = useState<{
+    x: number;
+    y: number;
+  } | null>(null);
+
+  useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
-      followEyeAnimation(container, e.clientX, e.clientY);
+      setMousePosition({ x: e.clientX, y: e.clientY });
     };
-    container.addEventListener("mousemove", handleMouseMove);
+
+    document.addEventListener("mousemove", handleMouseMove);
 
     return () => {
-      container.removeEventListener("mousemove", handleMouseMove);
+      document.removeEventListener("mousemove", handleMouseMove);
     };
   }, []);
 
@@ -36,8 +46,16 @@ export default function Home() {
     <div id={styles.print_container}>
       <div id={styles.grid_container} ref={containerRef}>
         {/* -- Following Eye -- */}
-        <FollowEye backgroundColor="var(--color-blue)" />
-        <FollowEye backgroundColor="var(--color-red)" />
+        <FollowEye
+          backgroundColor="var(--color-blue)"
+          mousePosition={mousePosition}
+        />
+        <FollowEye
+          backgroundColor="var(--color-red)"
+          mousePosition={mousePosition}
+        />
+        {/* -- Rotatting Stars -- */}
+        <RotatingStars />
       </div>
       <div>
         <div className={styles.title_container}>
