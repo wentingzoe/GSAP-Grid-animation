@@ -1,7 +1,8 @@
 "use client";
 import React, { useEffect, useRef } from "react";
 import gsap from "gsap";
-import { followEyeAnimation } from "../utils/followEyeAnimation";
+import FollowEye from "../components/FollowEye";
+import { followEyeAnimation } from "../utils/animations";
 import styles from "./page.module.css";
 
 export default function Home() {
@@ -21,7 +22,6 @@ export default function Home() {
       ease: "power1.inOut",
     });
 
-    // Handle mouse move animation for eyes within the container
     const handleMouseMove = (e: MouseEvent) => {
       followEyeAnimation(container, e.clientX, e.clientY);
     };
@@ -36,67 +36,8 @@ export default function Home() {
     <div id={styles.print_container}>
       <div id={styles.grid_container} ref={containerRef}>
         {/* -- Following Eye -- */}
-        <div className="box">
-          <div className="box-content">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
-              <defs>
-                <clipPath id="clip-mask">
-                  <path
-                    fill="none"
-                    d="M95.86 50S75.33 79.47 50 79.47 4.14 50 4.14 50 24.67 20.53 50 20.53 95.86 50 95.86 50Z"
-                  />
-                </clipPath>
-              </defs>
-              <path fill="var(--color-blue)" d="M0 0h100v100H0z" />
-              <g className="eye">
-                <path
-                  fill="var(--color-white)"
-                  d="M95.86 50S75.33 79.47 50 79.47 4.14 50 4.14 50 24.67 20.53 50 20.53 95.86 50 95.86 50Z"
-                />
-                <g clip-path="url(#clip-mask)">
-                  <circle
-                    className="eye-pupil"
-                    cx="50"
-                    cy="50"
-                    r="20.91"
-                    fill="var(--color-black)"
-                  />
-                </g>
-              </g>
-            </svg>
-          </div>
-        </div>
-        {/* -- Following Eye  Red-- */}
-        <div className="box">
-          <div className="box-content">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
-              <defs>
-                <clipPath id="clip-mask">
-                  <path
-                    fill="none"
-                    d="M95.86 50S75.33 79.47 50 79.47 4.14 50 4.14 50 24.67 20.53 50 20.53 95.86 50 95.86 50Z"
-                  />
-                </clipPath>
-              </defs>
-              <path fill="var(--color-red)" d="M0 0h100v100H0z" />
-              <g className="eye">
-                <path
-                  fill="var(--color-white)"
-                  d="M95.86 50S75.33 79.47 50 79.47 4.14 50 4.14 50 24.67 20.53 50 20.53 95.86 50 95.86 50Z"
-                />
-                <g clip-path="url(#clip-mask)">
-                  <circle
-                    className="eye-pupil"
-                    cx="50"
-                    cy="50"
-                    r="20.91"
-                    fill="var(--color-black)"
-                  />
-                </g>
-              </g>
-            </svg>
-          </div>
-        </div>
+        <FollowEye backgroundColor="var(--color-blue)" />
+        <FollowEye backgroundColor="var(--color-red)" />
       </div>
       <div>
         <div className={styles.title_container}>
