@@ -3,7 +3,7 @@ import React, { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import styles from "./page.module.css";
 import FollowEye from "@/components/FollowEye";
-import RotatingStars from "@/components/RotaingStars";
+import RotatingStars from "@/components/RotatingStars";
 
 export default function Home() {
   const containerRef = useRef<HTMLDivElement | null>(null);
@@ -48,7 +48,7 @@ export default function Home() {
           backgroundColor="var(--color-red)"
           mousePosition={mousePosition}
         />
-        {/* -- Rotatting Stars -- */}
+        {/* -- Rotating Stars -- */}
         <RotatingStars />
       </div>
       <div>
