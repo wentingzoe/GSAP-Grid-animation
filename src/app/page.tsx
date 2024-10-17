@@ -40,7 +40,6 @@ export default function Home() {
   return (
     <div id={styles.print_container}>
       <div id={styles.grid_container} ref={containerRef}>
-        {/* -- Following Eye -- */}
         <FollowEye
           backgroundColor="var(--color-blue)"
           mousePosition={mousePosition}
@@ -49,7 +48,6 @@ export default function Home() {
           backgroundColor="var(--color-red)"
           mousePosition={mousePosition}
         />
-        {/* -- Rotating Stars -- */}
         <RotatingStars />
         <RotatingCircles />
       </div>
