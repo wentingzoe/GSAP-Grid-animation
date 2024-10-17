@@ -10,7 +10,7 @@ const FollowEye: React.FC<{
     if (!containerRef.current || !mousePosition) return;
 
     const container = containerRef.current;
-    const maxTrans = 10;
+    const maxTrans = 15;
     const maxX = container.clientWidth / 2;
     const maxY = container.clientHeight / 2;
 
@@ -88,3 +88,4 @@ const FollowEye: React.FC<{
 };
 
 export default FollowEye;
+// ref: https://gsap.com/community/forums/topic/17962-cursor-follows-the-eyes/
