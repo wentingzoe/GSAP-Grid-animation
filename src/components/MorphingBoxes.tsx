@@ -1,5 +1,3 @@
-// src/components/MorphingBoxes.tsx
-
 import React, { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { interpolate } from "flubber";
@@ -21,16 +19,18 @@ const MorphingBoxes: React.FC = () => {
 
       if (fromShape && toShape) {
         const morphInterpolator = interpolate(fromShape, toShape, {
-          maxSegmentLength: 0.1, // Adjust for smoother animation
+          maxSegmentLength: 0.2, // Adjust for smoother animation
         });
 
+        // Animate the morph-box path using GSAP
         gsap.to(box, {
           duration: morphDuration,
           repeat: -1,
           yoyo: true,
           ease: "power1.inOut",
-          delay: i * 0.1,
+          delay: i * 0.1, // Stagger the start of each animation slightly
           onUpdate: function () {
+            // On each animation frame, update the path based on progress
             const progress = this.progress();
             const newPath = morphInterpolator(progress);
             box.setAttribute("d", newPath);
@@ -38,13 +38,13 @@ const MorphingBoxes: React.FC = () => {
         });
       }
 
-      // Morph the box-top paths
+      // Morph the box-top paths to align perfectly with the morph-boxes
       const boxTop = document.querySelector<SVGPathElement>(
         `#box-top-${i + 1}`
       );
       const boxTopFromShape = boxTop?.getAttribute("d");
       const boxTopToShape = document
-        .querySelector<SVGPathElement>(`#box-top-shape-${i + 1}`)
+        .querySelector<SVGPathElement>(`#morph-shape-${i + 1}`)
         ?.getAttribute("d");
 
       if (boxTop && boxTopFromShape && boxTopToShape) {
@@ -52,20 +52,25 @@ const MorphingBoxes: React.FC = () => {
           boxTopFromShape,
           boxTopToShape,
           {
-            maxSegmentLength: 0.1,
+            maxSegmentLength: 0.2, // Adjust for smoother animation of box-top
           }
         );
 
+        // Animate the box-top path using GSAP
         gsap.to(boxTop, {
           duration: morphDuration,
           repeat: -1,
           yoyo: true,
           ease: "power1.inOut",
-          delay: i * 0.1,
+          delay: i * 0.1, // Stagger the start of each animation slightly
           onUpdate: function () {
             const progress = this.progress();
             const newPath = boxTopMorphInterpolator(progress);
             boxTop.setAttribute("d", newPath);
+          },
+          onComplete: function () {
+            // Ensure boxTop is perfectly aligned with morph-box at the end of each cycle
+            boxTop.setAttribute("d", box.getAttribute("d") || "");
           },
         });
       }
@@ -134,43 +139,21 @@ const MorphingBoxes: React.FC = () => {
           <g className="morph-shapes" style={{ display: "none" }}>
             <path
               id="morph-shape-1"
-              d="M47.89 27.41 L28.88 27.41 L28.88 46.42 L47.89 46.42 Z"
-              fill="none"
-            />
-            <path
-              id="morph-shape-2"
-              d="M92.19 27.41 L73.18 27.41 L73.18 46.42 L92.19 46.42 Z"
-              fill="none"
-            />
-            <path
-              id="morph-shape-3"
-              d="M47.89 72.59 L28.88 72.59 L28.88 91.6 L47.89 91.6 Z"
-              fill="none"
-            />
-            <path
-              id="morph-shape-4"
-              d="M92.19 72.59 L73.18 72.59 L73.18 91.6 L92.19 91.6 Z"
-              fill="none"
-            />
-
-            {/* New box-top morph shapes */}
-            <path
-              id="box-top-shape-1"
               d="M28.88 27.41 L47.89 27.41 L47.89 46.42 L28.88 46.42 Z"
               fill="none"
             />
             <path
-              id="box-top-shape-2"
+              id="morph-shape-2"
               d="M73.18 27.41 L92.19 27.41 L92.19 46.42 L73.18 46.42 Z"
               fill="none"
             />
             <path
-              id="box-top-shape-3"
+              id="morph-shape-3"
               d="M28.88 72.59 L47.89 72.59 L47.89 91.6 L28.88 91.6 Z"
               fill="none"
             />
             <path
-              id="box-top-shape-4"
+              id="morph-shape-4"
               d="M73.18 72.59 L92.19 72.59 L92.19 91.6 L73.18 91.6 Z"
               fill="none"
             />
