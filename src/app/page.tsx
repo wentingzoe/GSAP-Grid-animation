@@ -5,6 +5,7 @@ import styles from "./page.module.css";
 import FollowEye from "@/components/FollowEye";
 import RotatingStars from "@/components/RotatingStars";
 import RotatingCircles from "@/components/RotatingCircles";
+import MorphingBoxes from "@/components/MorphingBoxes";
 
 export default function Home() {
   const containerRef = useRef<HTMLDivElement | null>(null);
@@ -50,6 +51,7 @@ export default function Home() {
         />
         <RotatingStars />
         <RotatingCircles />
+        <MorphingBoxes />
       </div>
       <div>
         <div className={styles.title_container}>
