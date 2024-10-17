@@ -4,6 +4,7 @@ import gsap from "gsap";
 import styles from "./page.module.css";
 import FollowEye from "@/components/FollowEye";
 import RotatingStars from "@/components/RotatingStars";
+import RotatingCircles from "@/components/RotatingCircles";
 
 export default function Home() {
   const containerRef = useRef<HTMLDivElement | null>(null);
@@ -50,6 +51,7 @@ export default function Home() {
         />
         {/* -- Rotating Stars -- */}
         <RotatingStars />
+        <RotatingCircles />
       </div>
       <div>
         <div className={styles.title_container}>
