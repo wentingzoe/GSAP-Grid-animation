@@ -10,6 +10,7 @@ import HalfCircles from "@/components/HalfCircles";
 import FollowStars from "@/components/FollowStars";
 import Stripes from "@/components/Stripes";
 import RandomCircles from "@/components/RandomCircles";
+import StretchBars from "@/components/StretchBars";
 
 export default function Home() {
   const containerRef = useRef<HTMLDivElement | null>(null);
@@ -60,6 +61,7 @@ export default function Home() {
         <FollowStars />
         <Stripes />
         <RandomCircles />
+        <StretchBars />
       </div>
       <div>
         <div className={styles.title_container}>
