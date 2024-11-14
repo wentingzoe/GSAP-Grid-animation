@@ -13,6 +13,7 @@ import RandomCircles from "@/components/RandomCircles";
 import StretchBars from "@/components/StretchBars";
 import RotatingDisk from "@/components/RotatingDisk";
 import Arrows from "@/components/Arrows";
+import LineDrawing from "@/components/LineDrawing";
 
 export default function Home() {
   const containerRef = useRef<HTMLDivElement | null>(null);
@@ -66,6 +67,7 @@ export default function Home() {
         <StretchBars />
         <RotatingDisk />
         <Arrows />
+        <LineDrawing />
       </div>
       <div>
         <div className={styles.title_container}>
