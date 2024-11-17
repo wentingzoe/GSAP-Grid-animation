@@ -17,6 +17,7 @@ import LineDrawing from "@/components/LineDrawing";
 import StackEllipses from "@/components/StackEllipses";
 import BalancingBalls from "@/components/BalancingBalls";
 import MorphingHeart from "@/components/MorphingHeart";
+import SplitWords from "@/components/SplitWords";
 
 export default function Home() {
   const containerRef = useRef<HTMLDivElement | null>(null);
@@ -75,17 +76,17 @@ export default function Home() {
         <BalancingBalls mousePosition={mousePosition} />
         <MorphingHeart />
       </div>
-      <div>
-        <div className={styles.title_container}>
-          <p className={styles.title}>GSAP GRID</p>
-          <div className={styles.color_pallet}>
-            {color_pallet.map((color) => (
-              <div
-                key={color}
-                style={{ backgroundColor: `var(--color-${color})` }}
-              ></div>
-            ))}
-          </div>
+
+      <div className={styles.title_container}>
+        <SplitWords />
+
+        <div className={styles.color_pallet}>
+          {color_pallet.map((color) => (
+            <div
+              key={color}
+              style={{ backgroundColor: `var(--color-${color})` }}
+            ></div>
+          ))}
         </div>
       </div>
     </div>
