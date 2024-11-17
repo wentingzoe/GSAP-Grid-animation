@@ -12,6 +12,11 @@ import Stripes from "@/components/Stripes";
 import RandomCircles from "@/components/RandomCircles";
 import StretchBars from "@/components/StretchBars";
 import RotatingDisk from "@/components/RotatingDisk";
+import Arrows from "@/components/Arrows";
+import LineDrawing from "@/components/LineDrawing";
+import StackEllipses from "@/components/StackEllipses";
+import BalancingBalls from "@/components/BalancingBalls";
+import MorphingHeart from "@/components/MorphingHeart";
 
 export default function Home() {
   const containerRef = useRef<HTMLDivElement | null>(null);
@@ -32,7 +37,7 @@ export default function Home() {
       ease: "power1.inOut",
     });
 
-    // Mouse Movement => Follow Eyes
+    // Mouse Movement
     const handleMouseMove = (e: MouseEvent) => {
       setMousePosition({ x: e.clientX, y: e.clientY });
     };
@@ -64,6 +69,11 @@ export default function Home() {
         <RandomCircles />
         <StretchBars />
         <RotatingDisk />
+        <Arrows />
+        <LineDrawing />
+        <StackEllipses />
+        <BalancingBalls mousePosition={mousePosition} />
+        <MorphingHeart />
       </div>
       <div>
         <div className={styles.title_container}>
