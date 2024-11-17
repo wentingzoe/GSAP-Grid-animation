@@ -11,7 +11,7 @@ const SplitWords: React.FC = () => {
     const titleElement = titleRef.current;
     const chars = titleElement.innerText.split("");
     titleElement.innerHTML = "";
-    chars.forEach((char, i) => {
+    chars.forEach((char) => {
       const span = document.createElement("span");
       span.textContent = char;
       span.style.display = "inline-block";
