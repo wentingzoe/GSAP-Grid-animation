@@ -16,6 +16,7 @@ import Arrows from "@/components/Arrows";
 import LineDrawing from "@/components/LineDrawing";
 import StackEllipses from "@/components/StackEllipses";
 import BalancingBalls from "@/components/BalancingBalls";
+import MorphingHeart from "@/components/MorphingHeart";
 
 export default function Home() {
   const containerRef = useRef<HTMLDivElement | null>(null);
@@ -72,6 +73,7 @@ export default function Home() {
         <LineDrawing />
         <StackEllipses />
         <BalancingBalls mousePosition={mousePosition} />
+        <MorphingHeart />
       </div>
       <div>
         <div className={styles.title_container}>
